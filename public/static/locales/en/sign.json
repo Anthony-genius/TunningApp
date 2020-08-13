@@ -1,0 +1,20 @@
+{
+    "signin":"Sign In",
+    "name":"Username",
+    "email":"E-mail",
+    "signup": "Sign Up",
+    "password": "Password",
+    "confpass": "Confirm Password",
+    "role": "Role",
+    "buyer": "Buyer", 
+    "seller": "Seller",
+    "nomatch": "No match",
+    "noemail": "No Validate E-mail",
+    "require": "This field is required",
+    "nocredential": "The E-mail or password not correct.",
+    "success1": "Welcome",
+    "success2": "Successfully created. Please verify your E-mail",
+    "error1": "Please Check your network again. Can't communicate with REST API server",
+    "error2": "Unknown Error",
+    "badpwdreq": "The password length is too short. The password must contain at least 8 characters. This password is too common."
+}
