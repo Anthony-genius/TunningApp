@@ -129,28 +129,27 @@ EMAIL_HOST_USER = 'loyaltalent94415@gmail.com'
 EMAIL_HOST_PASSWORD = 'BillGates94415'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_03177442131abab',
+#         'USER': 'b6027e1651ed3e',
+#         'PASSWORD': '4da47b2f',
+#         'HOST': 'us-cdbr-east-02.cleardb.com',
+#         'PORT': '3306',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_03177442131abab',
-        'USER': 'b6027e1651ed3e',
-        'PASSWORD': '4da47b2f',
-        'HOST': 'us-cdbr-east-02.cleardb.com',
+        'NAME': 'ibridge5_yectuning',
+        'USER': 'ibridge5_igor',
+        'PASSWORD': 'developer',
+        'HOST': '74.220.219.97',
         'PORT': '3306',
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'gp',
-#         'USER': 'gp',
-#         'PASSWORD': '?U5QF.d?~k4+}=99J6{V',
-#         'HOST': '35.223.187.129',
-#         'PORT': '5432',
-#     }
-# }
-# postgres://gp:?U5QF.d?~k4+}=99J6{V@35.223.187.129:5432/gp
 # mysql://ibridge5_igor:developer@74.220.219.97:3306/ibridge5_yectuning
 
 # DATABASES = {
@@ -216,7 +215,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['OPTIONS']['sslmode']
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build')
