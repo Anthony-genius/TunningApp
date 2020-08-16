@@ -149,8 +149,9 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+# postgresql://b6027e1651ed3e:4da47b2f@us-cdbr-east-02.cleardb.com:5432/heroku_03177442131abab
 # mysql://ibridge5_igor:developer@74.220.219.97:3306/ibridge5_yectuning
+# postgres://gp:?U5QF.d?~k4+}=99J6{V@35.223.187.129:5432/gp
 
 # DATABASES = {
 #     'default': {
@@ -215,7 +216,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['sslmode']
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build')
