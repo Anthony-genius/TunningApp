@@ -178,7 +178,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 REST_USE_JWT = True
-LOGIN_REDIRECT_URL='https://yectuning.herokuapp.com/'
+LOGIN_REDIRECT_URL='https://tunningapp.herokuapp.com/'
 REST_SESSION_LOGIN = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
