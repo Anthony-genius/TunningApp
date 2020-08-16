@@ -132,10 +132,10 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ibridge5_yectuning',
-        'USER': 'ibridge5_igor',
-        'PASSWORD': 'developer',
-        'HOST': '74.220.219.97',
+        'NAME': 'heroku_03177442131abab',
+        'USER': 'b6027e1651ed3e',
+        'PASSWORD': '4da47b2f',
+        'HOST': 'us-cdbr-east-02.cleardb.com',
         'PORT': '3306',
     }
 }
@@ -216,7 +216,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build')
