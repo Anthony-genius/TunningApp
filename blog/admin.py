@@ -20,7 +20,7 @@ class PostAdmin(admin.ModelAdmin):
 	search_fields = ['title', 'content']
 	fields = [('title', 'category'), ('display_image'), ('content'), ('admin_approval')]
 	def save_model(self, request, obj, form, change):
-		obj.author = request.user
+		obj.author = request.user.username
 		obj.save()
 
 admin.site.register(Category)

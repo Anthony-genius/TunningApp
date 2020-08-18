@@ -27,10 +27,10 @@ class Submission(models.Model):
 	ecu_type = models.CharField(max_length=100, null=True, blank=True)
 	car_plate_num = models.CharField(max_length=100)
 	created_on = models.DateTimeField(auto_now_add=True, editable=False)
-	file1 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream', 'application/zip'], max_upload_size=10485760, blank=True)
-	file2 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream', 'application/zip'], max_upload_size=10485760, blank=True)
-	file3 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream', 'application/zip'], max_upload_size=10485760, blank=True)
-	file4 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream', 'application/zip'], max_upload_size=10485760, blank=True)
+	file1 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream'], max_upload_size=10485760, blank=True)
+	file2 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream'], max_upload_size=10485760, blank=True)
+	file3 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream'], max_upload_size=10485760, blank=True)
+	file4 = ContentTypeRestrictedFileField(upload_to=case_upload_location, content_types=['application/octet-stream'], max_upload_size=10485760, blank=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE, null = True, blank = True)
 	def __str__(self):
 		return self.car_vin_number
