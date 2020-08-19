@@ -228,5 +228,5 @@ STATICFILES_DIRS = []
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.ftp.FTPStorage'
-FTP_STORAGE_LOCATION = 'ftp://igor@ibridgepy.com:developer@ftp.ibridgepy.com:21/firmware'
+# DEFAULT_FILE_STORAGE = 'storages.backends.ftp.FTPStorage'
+FTP_STORAGE_LOCATION = 'ftp://igor@ibridgepy.com:developer@ftp.ibridgepy.com:21/manuals'

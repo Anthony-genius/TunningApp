@@ -1,3 +1,19 @@
+# FTP storage class for Django pluggable storage system.
+# Author: Rafal Jonca <jonca.rafal@gmail.com>
+# License: MIT
+# Comes from http://www.djangosnippets.org/snippets/1269/
+#
+# Usage:
+#
+# Add below to settings.py:
+# FTP_STORAGE_LOCATION = '[a]ftp://<user>:<pass>@<host>:<port>/[path]'
+#
+# In models.py you can write:
+# from FTPStorage import FTPStorage
+# fs = FTPStorage()
+# class FTPTest(models.Model):
+#     file = models.FileField(upload_to='a/b/c/', storage=fs)
+
 import os
 from datetime import datetime
 import ftplib
@@ -5,9 +21,9 @@ import ftplib
 from django.conf import settings
 from django.core.files.base import File
 from django.core.exceptions import ImproperlyConfigured
-
-from storages.compat import urlparse, BytesIO, Storage
-
+from django.core.files.storage import Storage
+import urllib.parse as urlparse
+from io import BytesIO
 
 class FTPStorageException(Exception):
     pass
