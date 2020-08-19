@@ -1,6 +1,9 @@
 from django.db import models
 import datetime
 import uuid
+from .ftp import FTPStorage
+
+fs = FTPStorage()
 # Create your models here.
 def case_upload_software_location(instance, filename):
     case_name = instance.name.lower().replace(" ", "-")
@@ -15,7 +18,7 @@ class FAQ(models.Model):
 class DownloadableSoftware(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	name = models.CharField(max_length=100)
-	downloadable_file = models.FileField(upload_to=case_upload_software_location)
+	downloadable_file = models.FileField(upload_to='srv/ftp/', storage=fs)
 	price = models.IntegerField()
 	def __str__(self):
 		return self.name

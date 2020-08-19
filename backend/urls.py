@@ -36,19 +36,15 @@ news_patterns = ([
     # re_path(r'^rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(), name='account_confirm_email'),
 ], 'apis')
 urlpatterns += i18n_patterns(
-    path('', index, name='index'),
     path('admin/', admin.site.urls),
     # path('login/', LoginView.as_view(), name='account_login'),
     re_path(r'^rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', allauthemailconfirmation,  name='account_confirm_email'),
     path('accounts/', include('allauth.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    
-    # path('registration/', include('rest_auth.registration.urls')),
-    # path('registration/', RegisterView.as_view(), name='account_signup'),
-    
-    
-    path('apis/', include(news_patterns, namespace='apis')), prefix_default_language=False,
+    path('apis/', include(news_patterns, namespace='apis')),
+    re_path(r'^$', index),
+    re_path(r'[_\w]+$', index), prefix_default_language=False,
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
