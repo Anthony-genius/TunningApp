@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const PowerGraphPanel = styled.section`
     background: transparent url(/static/images/striped_bg.gif) repeat center center;
+    font-size: .85em;
 @media screen and (min-width:768px) {
     margin:1em 1em 1em 0;
     width:28%;

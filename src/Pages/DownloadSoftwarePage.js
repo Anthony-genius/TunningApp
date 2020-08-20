@@ -7,10 +7,12 @@ import Breadcrum from '../Components/Breadcrum'
 import {connect} from 'react-redux'
 import {PageLoader} from '../Components/SpinnerLoader'
 import {NewsPanel, SubmissionBlock, SubmissionTitle, SubmissionText, SubmissionLinkRM} from '../Elements/NewsPanel';
-
+import {SearchForm} from '../Elements/SearchForm';
+import {SearchInput} from '../Elements/Input';
 
 const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}) => {
     const [pageFlag, setPageFlag] = React.useState(false)
+    const [searchVal, setSearchVal] = React.useState("")
     React.useEffect(()=>{
         setPageFlag(true)
         getDownloadSoftware(setPageFlag)
@@ -19,6 +21,10 @@ const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}
         const price = e.target.id
         const download_url = e.target.name
         history.push(`/payment?price=${price}&desc=Download Software&download_url=${download_url}`)
+    }
+    const handleChange = e => {
+        setSearchVal(e.target.value)
+        console.log("----", e.target.value)
     }
     return(
         <NewsPanel>
@@ -31,10 +37,15 @@ const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}
             {
                 pageFlag
                 ? <PageLoader />
-                : <span></span>
+                : <SearchForm>
+                    <SearchInput placeholder="Search..." id="searchinput" onChange={handleChange} />
+
+                </SearchForm>
             }
+            <Spacer />
+
             {
-                download_softwares && download_softwares.length > 0 && download_softwares.map((item, index)=>(
+                download_softwares && download_softwares.length > 0 && download_softwares.filter(item=>item.name.toLowerCase().includes(searchVal.toLowerCase())).map((item, index)=>(
                     <SubmissionBlock key={index}>
                                 <SubmissionTitle>{item.name}</SubmissionTitle>
                                 {

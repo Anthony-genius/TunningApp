@@ -60,22 +60,21 @@ function NewsPage({getPostData, posts}) {
                                         <NewsPane>
                                             <NewsImage src={item.display_image} alt={item.title} />
                                             <NewsLabel>
-                                                <NewsTitle>{item.title}</NewsTitle>
+                                                <NewsTitle>{item.title} written by {item.author}</NewsTitle>
                                             </NewsLabel>
                                         </NewsPane>
                                     </NewsBlock></Link>
                                 )    
                             }else {
                                 return (
-                                    <NewsBlockRt>
+                                    <Link to={`/news/${item.id}`} key={index}><NewsBlockRt>
                                         <NewsPane>
                                             <NewsImage src={item.display_image} alt={item.title} />
                                             <NewsLabel>
                                                 <NewsTitle>{item.title} written by {item.author}</NewsTitle>
-                                                <NewsText>Met veel plezier kondigen wij aan dat het vanaf vandaag mogelijk is om... <a href="#">read more</a> </NewsText>
                                             </NewsLabel>
                                         </NewsPane>
-                                    </NewsBlockRt>
+                                    </NewsBlockRt></Link>
                                 )
                             }
                         })

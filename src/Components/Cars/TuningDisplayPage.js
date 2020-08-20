@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import Breadcrum from '../Breadcrum'
 import Stages from '../Stages';
 import Disclaimer from '../Disclaimer';
-
+import PowerGraph from '../PowerGraph'
 
 const TuningDisplayPage = ({brand_id, model_id, year, engine_id, brands, models, engines}) => {
 	let cur_brand
@@ -50,6 +50,7 @@ const TuningDisplayPage = ({brand_id, model_id, year, engine_id, brands, models,
             
             <Spacer />
             <Stages data={cur_engine} />
+            <PowerGraph />
             <Spacer />
             <Disclaimer />
             <Brands />

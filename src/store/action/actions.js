@@ -297,12 +297,20 @@ export const signupUser = dispatch => async (postData, setAlert, setSignupErrors
                 setSignupErrors({
                     password1: err.response.data.password1
                 })
+            } else if (err.response.data.email) {
+                setSignupErrors({
+                    email: err.response.data.email
+                })
+            } else if (err.response.data.username) {
+                setSignupErrors({
+                    username: err.response.data.username
+                })
             } else {
                 setAlert({
                     flag: "failed",
                     val: errVal.error2
                 })
-            }          
+            }           
         })
 
 }

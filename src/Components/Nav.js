@@ -35,14 +35,13 @@ function Nav({auth, logoutUser, saveVisitUrl}) {
         <nav>
             <Menu>
                 <Link to="/"><MenuItem>{t("menuitem1")}</MenuItem></Link>
-                <MenuItem>{t("menuitem2")}
+                <Link to="/news"><MenuItem>{t("menuitem21")}
                     <SubMenuLD>
                         <SubMenuLDArrow><img src="/static/images/subnav_arrow_left.gif" alt="image_src"/></SubMenuLDArrow>
-                        <Link to="/news"><SubMenuLDItem>{t("menuitem21")}</SubMenuLDItem></Link>
-                        <Link to="/submission"><SubMenuLDItem id="/submission" onClick={handleClick}>{t("menuitem22")}</SubMenuLDItem></Link>
                         <Link to="/compose"><SubMenuLDItem id="/compose" onClick={handleClick}>{t("menuitem23")}</SubMenuLDItem></Link>
                     </SubMenuLD>
-                </MenuItem>
+                </MenuItem></Link>
+                <Link to="/submission"><MenuItem id="/submission" onClick={handleClick}>{t("menuitem22")}</MenuItem></Link>
                 <Link to="/chiptuning"><MenuItem>{t("menuitem3")}
                     {/*<SubMenuRD>
                                             <SubMenuRDArrow><img src="/static/images/subnav_arrow_right.gif" alt="image_src"/></SubMenuRDArrow>
