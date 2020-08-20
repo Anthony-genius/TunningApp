@@ -19,8 +19,8 @@ class DownloadableSoftware(models.Model):
 	name = models.CharField(max_length=100)
 	downloadable_file = models.FileField(upload_to='', storage=fs)
 	price = models.IntegerField()
-	def __str__(self):
-		return self.name
+	def save(self, *args, **kwargs):		
+		super(DownloadableSoftware, self).save(*args, **kwargs)
 class TopCarouseInHome(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	name = models.CharField(max_length=100)

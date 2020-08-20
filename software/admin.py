@@ -5,7 +5,9 @@ class DownloadableSoftwareAdmin(admin.ModelAdmin):
 	list_display = ['name',]
 	list_per_page = 10
 	search_fields = ['name',]
-
+	def save_model(self, request, obj, form, change):
+		obj.name = obj.downloadable_file
+		obj.save()
 class FAQAdmin(admin.ModelAdmin):
 	list_display = ['question',]
 	list_per_page = 10
