@@ -38,7 +38,7 @@ const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}
                 pageFlag
                 ? <PageLoader />
                 : <SearchForm>
-                    <SearchInput placeholder="Search..." id="searchinput" onChange={handleChange} />
+                    <SearchInput style={{width: '80vw'}} placeholder="Search..." id="searchinput" onChange={handleChange} />
 
                 </SearchForm>
             }
@@ -55,9 +55,9 @@ const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}
                                 }
 
                                 <SubmissionLinkRM id={item.price} name={item.downloadable_file} onClick={handleClick}>Pay for Download</SubmissionLinkRM>
-                                <Download>
-                                    <DownloadableItem id={item.name} href={item.downloadable_file} download>{item.name}</DownloadableItem>
-                                </Download>
+                                {/*<Download>
+                                                                    <DownloadableItem id={item.name} href={item.downloadable_file} download>{item.name}</DownloadableItem>
+                                                                </Download>*/}
                     </SubmissionBlock>
 
                     
