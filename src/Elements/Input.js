@@ -86,4 +86,21 @@ export const CurrencyAmount = styled.label`
     width:95%;
 }
 `
-
+export const SearchFullInput = styled.input`
+    width: 80%;
+    color:#999;
+    border-radius:50px;
+    height:27px;
+    margin:1em;
+    padding: 4px 22px 2px 22px;
+    font-size:14px;
+    -webkit-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 2px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 0px #000;
+    box-shadow: inset 0px 2px 2px rgba(0,0,0,0.5);
+    border:none;
+    background-color: #3e3e3e;
+    background: -webkit-gradient(linear, left top, left bottom, from(#545454), to(#3e3e3e));
+    background: -moz-linear-gradient(top, #545454, #3e3e3e);
+    line-height: normal;
+`

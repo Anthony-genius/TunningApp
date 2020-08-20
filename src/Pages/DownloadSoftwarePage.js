@@ -9,7 +9,8 @@ import {PageLoader} from '../Components/SpinnerLoader'
 import {NewsPanel, SubmissionBlock, SubmissionTitle, SubmissionText, SubmissionLinkRM} from '../Elements/NewsPanel';
 import {SearchForm} from '../Elements/SearchForm';
 import {SearchInput} from '../Elements/Input';
-
+import {SearchFullForm} from '../Elements/SearchForm';
+import {SearchFullInput} from '../Elements/Input';
 const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}) => {
     const [pageFlag, setPageFlag] = React.useState(false)
     const [searchVal, setSearchVal] = React.useState("")
@@ -37,10 +38,10 @@ const DownloadSoftwarePage = ({getDownloadSoftware, download_softwares, history}
             {
                 pageFlag
                 ? <PageLoader />
-                : <SearchForm>
-                    <SearchInput style={{width: '80vw'}} placeholder="Search..." id="searchinput" onChange={handleChange} />
+                : <SearchFullForm>
+                    <SearchFullInput style={{width: '80vw'}} placeholder="Search..." id="searchinput" onChange={handleChange} />
 
-                </SearchForm>
+                </SearchFullForm>
             }
             <Spacer />
 
