@@ -61,7 +61,10 @@ INSTALLED_APPS = [
     'blog',
     'submission.apps.SubmissionConfig',
     'software',
+    'userprofile',
+    'ftpserver',
 ]
+# AUTH_USER_MODEL = 'userprofile.CustomUser'
 SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,9 +104,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
     ],
 }
 AUTHENTICATION_BACKENDS = [
@@ -112,34 +113,14 @@ AUTHENTICATION_BACKENDS = [
 ]
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'igrambilchester@gmail.com'
 EMAIL_HOST_PASSWORD = 'BillGates94415'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'heroku_03177442131abab',
-#         'USER': 'b6027e1651ed3e',
-#         'PASSWORD': '4da47b2f',
-#         'HOST': 'us-cdbr-east-02.cleardb.com',
-#         'PORT': '3306',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -178,11 +159,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# REST_AUTH_SERIALIZERS = {
+#     'USER_DETAILS_SERIALIZER': 'userprofile.serializers.UserSerializer',
+# }
+
 REST_USE_JWT = True
 LOGIN_REDIRECT_URL='https://tunningapp.herokuapp.com/'
 REST_SESSION_LOGIN = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
@@ -217,7 +204,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']
 MEDIA_ROOT = BASE_DIR + '/static/upload/'
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'build')

@@ -7,7 +7,7 @@ import Alert from '../Components/Alert';
 import { Provider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import {connect} from "react-redux"
-import {submitSubmission} from "../store/action/actions"
+import {submitSubmission, downloadSoftware} from "../store/action/actions"
 
 require('dotenv').config()
 
@@ -81,7 +81,7 @@ class PaypalButton extends React.Component {
     });
   };
 
-  onApprove = (data, actions, download_url, submit_data, submitSubmission) => {
+  onApprove = (data, actions, download_url, submit_data, submitSubmission, downloadSoftware) => {
     actions.order.capture().then(details => {
       const paymentData = {
         payerID: data.payerID,
@@ -89,7 +89,8 @@ class PaypalButton extends React.Component {
       };
       console.log("Payment Approved: ", paymentData);
       if (download_url) {
-      	window.location.assign(download_url)
+        downloadSoftware(download_url)
+      	// window.location.assign(download_url)
       } else if (submit_data) {
       	submitSubmission(submit_data)
       }
@@ -100,7 +101,7 @@ class PaypalButton extends React.Component {
 
   render() {
     const { showButtons, loading, paid } = this.state;
-    const {price, description, download_url, submit_data, submitSubmission} = this.props
+    const {price, description, download_url, submit_data, submitSubmission, downloadSoftware} = this.props
     return (
       <div className="main">
         {loading && <ButtonLoader />}
@@ -114,7 +115,7 @@ class PaypalButton extends React.Component {
 
             <PayPalButton
               createOrder={(data, actions) => this.createOrder(data, actions, price)}
-              onApprove={(data, actions) => this.onApprove(data, actions, download_url, submit_data, submitSubmission)}
+              onApprove={(data, actions) => this.onApprove(data, actions, download_url, submit_data, submitSubmission, downloadSoftware)}
             />
           </div>
         )}
@@ -143,6 +144,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 const mapDispatchToProps = dispatch => ({
   submitSubmission: submitSubmission(dispatch),
+  downloadSoftware: downloadSoftware(dispatch),
 })
 export default scriptLoader(`https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}`)(connect(mapStateToProps, mapDispatchToProps)(PaypalButton))
 // export default scriptLoader(`https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}`)(PaypalButton);

@@ -2,7 +2,8 @@ import React from 'react';
 import {PowerGraphPanel, PowerGraphHeader, PowerGraphHeaderSpan, PowerGraphHeaderSpanImage, PowerGraphHeaderSpanHLTitle} from '../Elements/PowerGraphPanel';
 import {PowerGraphContent, PowerGraphImage} from '../Elements/PowerGraphPanel';
 
-function PowerGraph() {
+function PowerGraph({imgsrc}) {
+    console.log("--", imgsrc)
     return(
         <PowerGraphPanel>
             <PowerGraphHeader>
@@ -12,7 +13,7 @@ function PowerGraph() {
                 </PowerGraphHeaderSpan>
             </PowerGraphHeader>
             <PowerGraphContent>
-                <PowerGraphImage src="/static/images/watermark_91.jpg" />
+                <PowerGraphImage src={imgsrc} />
             </PowerGraphContent>
         </PowerGraphPanel>
     );

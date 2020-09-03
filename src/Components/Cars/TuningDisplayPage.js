@@ -9,6 +9,7 @@ import Stages from '../Stages';
 import Disclaimer from '../Disclaimer';
 import PowerGraph from '../PowerGraph'
 
+
 const TuningDisplayPage = ({brand_id, model_id, year, engine_id, brands, models, engines}) => {
 	let cur_brand
     if (brands && brands.length > 0) {
@@ -50,7 +51,7 @@ const TuningDisplayPage = ({brand_id, model_id, year, engine_id, brands, models,
             
             <Spacer />
             <Stages data={cur_engine} />
-            <PowerGraph />
+            <PowerGraph imgsrc={cur_engine.power_graph} />
             <Spacer />
             <Disclaimer />
             <Brands />

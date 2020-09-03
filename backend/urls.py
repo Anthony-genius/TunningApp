@@ -22,6 +22,7 @@ from django.conf.urls.i18n import i18n_patterns
 from rest_auth.registration.views import VerifyEmailView, RegisterView
 from allauth.account.views import confirm_email as allauthemailconfirmation
 from software.views import index
+from ftpserver.views import download_link_from_ftp
 
 urlpatterns = []
 news_patterns = ([
@@ -29,6 +30,7 @@ news_patterns = ([
     path('blog/', include('blog.urls')),
     path('submission/', include('submission.urls')),
     path('software/', include('software.urls')),
+    path('user/', include('userprofile.urls')),
     path('accounts/', include('allauth.urls')),
     # path('rest-auth/', include('rest_auth.urls')),
     # path('rest-auth/registration/', include('rest_auth.registration.urls')),
@@ -36,6 +38,7 @@ news_patterns = ([
     # re_path(r'^rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(), name='account_confirm_email'),
 ], 'apis')
 urlpatterns += i18n_patterns(
+    # path('special/', download_link_from_ftp),
     path('admin/', admin.site.urls),
     # path('login/', LoginView.as_view(), name='account_login'),
     re_path(r'^rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', allauthemailconfirmation,  name='account_confirm_email'),

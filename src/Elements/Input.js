@@ -86,6 +86,7 @@ export const CurrencyAmount = styled.label`
     width:95%;
 }
 `
+
 export const SearchFullInput = styled.input`
     width: 80%;
     color:#999;

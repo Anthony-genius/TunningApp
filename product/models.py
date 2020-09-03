@@ -5,7 +5,6 @@ class CarBrand(models.Model):
     """docstring for CarBrand"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     brand_name = models.CharField(max_length=100, help_text="Enter The Car Brand Name")
-    brand_image = models.ImageField(upload_to='images/brand/', help_text="Upload The Image For The Car Brand")
     banner_image = models.ImageField(upload_to='images/banner/', help_text="Upload The Image For The Banner")
     def __str__(self):
         return self.brand_name

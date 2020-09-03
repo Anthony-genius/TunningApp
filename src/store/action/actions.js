@@ -206,6 +206,17 @@ export const getTopCarousel = dispatch => () => {
         console.log(err)
     })
 }
+export const downloadSoftware = dispatch => async (download_url)=> {
+    await axios
+    .get(`${SERVER_PORT}/special/?download_url=${download_url}`)
+    .then(res=>{
+        if (res.status === 200) {
+            window.location.assign(`${SERVER_PORT}/media/${download_url}`)
+        }
+            // window.location.assign(download_url)
+    })
+    .catch(err=>console.log(err))
+}
 export const submitSubmission = dispatch => async (postData, setAlert, errVal) => {
         await axios
         .post(`${SERVER_PORT}/apis/submission/submission/`, postData)
@@ -268,21 +279,61 @@ export const submitBlog = dispatch => async (postData, setAlert, errVal) => {
             console.log(err)
         })
 }
-export const signupUser = dispatch => async (postData, setAlert, setSignupErrors, errVal, lang) => {
+export const signProfile = (newProfile, id) => {
+    return dispatch => {
+        axios
+        .put(`${SERVER_PORT}/apis/user/userprofile/${id}/`, newProfile)
+        .then(res => {
+            dispatch({
+                type: actionTypes.GET_PROFILE,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}
+export const signupUser = dispatch => async (postData, userProfile, setAlert, setSignupErrors, errVal, lang) => {
     let langVal
     if (lang === "en") {
         langVal = "/en"
     } else {
         langVal = ""
     }
-
+    const detectEmail = postData.email
+    let newProfile
         await axios
         .post(`${SERVER_PORT}${langVal}/rest-auth/registration/`, postData)
         .then(res=>{
             if (res.status === 201) {
-                setAlert({
-                    flag: "success",
-                    val: errVal.success2
+                axios
+                .get(`${SERVER_PORT}/apis/user/users/`)
+                .then(res=>{
+                    const detectUser = res.data.filter(item => item.email === detectEmail)[0]
+                    console.log("detectUser", detectUser)
+                    axios
+                    .get(`${SERVER_PORT}/apis/user/userprofile/`)
+                    .then(res=>{
+                        const detectProfile = res.data.filter(item=>item.user === detectUser.id)[0]
+                        console.log("detectProfile", detectProfile)
+                        newProfile = {
+                            ...userProfile,
+                            "user": detectUser.id
+                        }
+                        dispatch(signProfile(newProfile, detectProfile.id))
+                    })
+                    .catch(err=> {
+                        setAlert({
+                            flag: "failed",
+                            val: errVal.error1
+                        })
+                    })
+                   
+                })
+                .catch(err=>{
+                    setAlert({
+                        flag: "failed",
+                        val: errVal.error1
+                    })
                 })
             } else {
                 setAlert({
@@ -310,15 +361,35 @@ export const signupUser = dispatch => async (postData, setAlert, setSignupErrors
                     flag: "failed",
                     val: errVal.error2
                 })
-            }           
+            }          
         })
 
 }
 export const setCurrentUser = decoded=> {
-    return {
-        type: actionTypes.SET_CURRENT_USER,
-        payload: decoded
+    let payload = {}
+    payload.user = decoded
+    // return {
+    //         type: actionTypes.SET_CURRENT_USER,
+    //         payload: payload
+    //     }
+            
+    return dispatch => {
+        axios
+        .get(`${SERVER_PORT}/apis/user/userprofile/`)
+        .then(res=>{
+            console.log("res", res.data, decoded)
+            const profile = res.data.filter(item=>item.user === decoded.user_id)[0]
+            console.log("========profile=", profile)
+            payload.profile = profile
+            dispatch({
+                type: actionTypes.SET_CURRENT_USER,
+                payload: payload
+            })
+        })
+        .catch(err=> console.log(err))
+
     }
+    
 }
 export const loginUser = dispatch => async (loginData, setAlert, setLoginErrors, lang, errVal, history, visit_url) => {
     let langVal

@@ -108,7 +108,8 @@ export const InnerContainer = styled.div`
   width:90%;
   background: transparent url(/static/images/textile_texture_bg.gif) repeat center top;
 `
-export const Select = styled.select`
+export const Select = styled.select.attrs({
+})`
   background-color: #3e3e3e;
   font: 16px Arial, Helvetica, sans-serif;
   color: #ccc;

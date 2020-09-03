@@ -17,7 +17,7 @@ class FAQ(models.Model):
 class DownloadableSoftware(models.Model):
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	name = models.CharField(max_length=100)
-	downloadable_file = models.FileField(upload_to='', storage=fs)
+	downloadable_file = models.CharField(max_length=100)
 	price = models.IntegerField()
 	def save(self, *args, **kwargs):		
 		super(DownloadableSoftware, self).save(*args, **kwargs)

@@ -46,6 +46,7 @@ const SignUp = ({signupUser, lang}) => {
   }
 
   const handleClick = async e => {
+    let signProfileData = {}
     setAlert({
       flag: ""
     })
@@ -73,9 +74,16 @@ const SignUp = ({signupUser, lang}) => {
       setSignupErrors({
         password2: t("nomatch")
       })
+    } else if (!signupParam.user_level || isEmpty(signupParam.user_level)) {
+      setSignupErrors({
+        user_level: t("require")
+      })
     } else {
+      signProfileData.user_level = signupParam.user_level
+      signProfileData.credit_point = signupParam.credit_point
+      console.log("====", signupParam)
       setBtnFlag(true)
-      await signupUser(signupParam, setAlert, setSignupErrors, errVal, lang)
+      await signupUser(signupParam, signProfileData, setAlert, setSignupErrors, errVal, lang)
       setBtnFlag(false)
     }
   }
@@ -103,12 +111,18 @@ const SignUp = ({signupUser, lang}) => {
 
                     <Label>{t("confpass")} {signupErrors.password2 && (<WarningSpan>{signupErrors.password2}</WarningSpan>)}</Label>
                     <Input type='password' id="password2" onChange={handleChange} error={signupErrors.password2 && true} />
+                    <Label>{t("user_level")} {signupErrors.user_level && (<WarningSpan>{signupErrors.user_level}</WarningSpan>)}</Label>
+                    <Select id="user_level" onChange={handleChange} error={signupErrors.user_level && true}>
+                      <option></option>
+                      <option value="local_shop">{t("local_shop")}</option>
+                      <option value="subdealer">{t("subdealer")}</option>
+                      <option value="regular_user">{t("regular_user")}</option>
+                    </Select>
 
-                    {/*<Label>{t("role")}</Label>
-                    <Select>
-                                          <option>{t("buyer")}</option>
-                                          <option>{t("seller")}</option>
-                                        </Select>*/}
+                    <Label>{t("credit_point")}</Label>
+                    <Select id="credit_point" disabled>
+                      <option>USD</option>
+                    </Select>
                   <center><Button type="submit" onClick={handleClick}>{
                     btnFlag
                     ? <ButtonLoader />

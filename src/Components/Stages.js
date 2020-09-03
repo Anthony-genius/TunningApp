@@ -186,15 +186,15 @@ function Stages({data}) {
                     </tr>
                             )
                     }
-                    <tr>
-                        <StagesTableNBTH colSpan="3">
-                            <Big>Price VAT included</Big>
-                            <StagesTableA href="#">Payment Options</StagesTableA>
-                        </StagesTableNBTH>
-                        <StagesTablePriceTD>
-                        € 
-                        </StagesTablePriceTD>
-                    </tr>
+                    {/*<tr>
+                                            <StagesTableNBTH colSpan="3">
+                                                <Big>Price VAT included</Big>
+                                                <StagesTableA href="#">Payment Options</StagesTableA>
+                                            </StagesTableNBTH>
+                                            <StagesTablePriceTD>
+                                            € 
+                                            </StagesTablePriceTD>
+                                        </tr>*/}
                     {/*<tr>
                                             <StagesTableTD colSpan="4">
                                                 <StagesTableSpan>Have any questions regarding this stage?</StagesTableSpan>

@@ -225,7 +225,7 @@ try:
                            ('123a201c17294d82a16d8c10647b46a3', 'Sandero', 'images/banner/dacia_sandero.jpg', '7a1cfff351cc42ef983ab17efc6f4a81'),
                            
                            # DAEWOO
-  						   ('123a201c17294d82a16d8c10647b46a7', 'Tosca', 'images/banner/daewoo_tosca.jpg', 'c36c8e366e21466db9d6746fa4ecc382'),
+  						         ('123a201c17294d82a16d8c10647b46a7', 'Tosca', 'images/banner/daewoo_tosca.jpg', 'c36c8e366e21466db9d6746fa4ecc382'),
                            ('123a201c17294d82a16d8c10647b46a8', 'Winstorm', 'images/banner/daewoo_winstorm.jpg', 'c36c8e366e21466db9d6746fa4ecc382'),
                            
                            # Dodge

@@ -35,7 +35,7 @@ function MainPage() {
         <Route path="/search" component={SearchPage} />
         <Route path="/news" exact component={NewsPage} />
         <Route path="/news/:news_id" exact component={NewsItemPage} />
-        <Route path="/download-software" exact component={DSPage} />
+        <PrivateRoute path="/download-software" exact component={DSPage} />
         <Route path="/payment" exact component={PaymentPage} />
         <Route path="/testpayment" exact component={TestPayment} />
         <PrivateRoute path="/submission" exact component={SubmissionPage} />
