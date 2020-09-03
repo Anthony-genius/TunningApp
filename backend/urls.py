@@ -38,7 +38,7 @@ news_patterns = ([
     # re_path(r'^rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(), name='account_confirm_email'),
 ], 'apis')
 urlpatterns += i18n_patterns(
-    # path('special/', download_link_from_ftp),
+    path('special/', download_link_from_ftp),
     path('admin/', admin.site.urls),
     # path('login/', LoginView.as_view(), name='account_login'),
     re_path(r'^rest-auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', allauthemailconfirmation,  name='account_confirm_email'),
